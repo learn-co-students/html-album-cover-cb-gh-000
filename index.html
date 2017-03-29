@@ -1,45 +1,74 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>HTML Album Cover</title>
-    <link rel="stylesheet" href="css/style.css">
-  </head>
-  <body>
-    <div class="wrapper">
-      <div id="front" class="album">
-        <div id="title-box">
+<html>
+<body>
+<div>
+  <a href="#" id="start_button" onclick="startDictation(event)">Dictate</a>
+</div>
 
-          <!-- Level 4 'PHARRELL WILLIAMS' Header -->
-          <h4>PHARRELL WILLIAMS</h4>
-          <!-- Level 2 'HAPPY' Header -->
-          <h2>HAPPY</h2>
-          <!-- Level 4 '| FROM DESPICABLE ME...' Header -->
-          <h4>| FROM DESPICABLE ME...</h4>
-        </div>
-      </div>
+<div id="results">
+  <span id="final_span" class="final"></span>
+  <span id="interim_span" class="interim"></span>
+</div>
 
-      <div id="back" class="album">
+<script type="text/javascript">
+var final_transcript = '';
+var recognizing = false;
 
-        <!-- Level 3 '| FROM DESPICABLE ME...' Header -->
-        <h3>| FROM DESPICABLE ME 2 |</h3>
-        <!-- Level 1 'HAPPY' Header -->
-        <h1>HAPPY</h1>
-        <!-- Level 3 'WRITTEN BY...' Header -->
-        <h3>WRITTEN BY PHARRELL WILLIAMS</h3>
-        <!-- pararaph text 'PUBLISHED BY...' -->
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <!-- span text 'PHARRELLWILLIAMS.COM' -->
-        <span>PHARRELLWILLIAMS.COM</span>
-        <!-- display the images hosted on [https://s3.amazonaws.com/learn-verified/columbia-logo.png] -->
-        <img src="https://s3.amazonaws.com/learn-verified/columbia-logo.png">
-        <!-- span text 'COLUMBIARECORDS.COM' -->
-        <span>COLUMBIARECORDS.COM</span>
-        <br>
+if ('webkitSpeechRecognition' in window) {
 
-        <!-- display the images hosted on [https://s3.amazonaws.com/learn-verified/sony-logo.png] -->
-        <img src="https://s3.amazonaws.com/learn-verified/sony-logo.png">
-      </div>
-    </div>
-  </body>
+  var recognition = new webkitSpeechRecognition();
+
+  recognition.continuous = true;
+  recognition.interimResults = true;
+
+  recognition.onstart = function() {
+    recognizing = true;
+  };
+
+  recognition.onerror = function(event) {
+    console.log(event.error);
+  };
+
+  recognition.onend = function() {
+    recognizing = false;
+  };
+
+  recognition.onresult = function(event) {
+    var interim_transcript = '';
+    for (var i = event.resultIndex; i < event.results.length; ++i) {
+      if (event.results[i].isFinal) {
+        final_transcript += event.results[i][0].transcript;
+      } else {
+        interim_transcript += event.results[i][0].transcript;
+      }
+    }
+    final_transcript = capitalize(final_transcript);
+    final_span.innerHTML = linebreak(final_transcript);
+    interim_span.innerHTML = linebreak(interim_transcript);
+    
+  };
+}
+
+var two_line = /\n\n/g;
+var one_line = /\n/g;
+function linebreak(s) {
+  return s.replace(two_line, '<p></p>').replace(one_line, '<br>');
+}
+
+function capitalize(s) {
+  return s.replace(s.substr(0,1), function(m) { return m.toUpperCase(); });
+}
+
+function startDictation(event) {
+  if (recognizing) {
+    recognition.stop();
+    return;
+  }
+  final_transcript = '';
+  recognition.lang = 'en-US';
+  recognition.start();
+  final_span.innerHTML = '';
+  interim_span.innerHTML = '';
+}
+</script>
+</body>
 </html>
