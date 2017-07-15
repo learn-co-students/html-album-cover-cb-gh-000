@@ -13,4 +13,5 @@ This challenge asks that you recreate the album cover shown in the <a href="http
 5. Use the comments in the index.html file to create the elements neccesary to recreate the album cover shown in <a href="https://s3.amazonaws.com/learn-verified/MOCKUP.jpg" target="_blank">MOCKUP.jpg</a>. Also use SOURCE.md to copy and paste all neccesary filler text.
 6. Open up index.html in the browser as well for a side by side comparison with <a href="https://s3.amazonaws.com/learn-verified/MOCKUP.jpg" target="_blank">MOCKUP.jpg</a> as you work.
 
+
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/html-album-cover' title='HTML Album Cover'>HTML Album Cover</a> on Learn.co and start learning to code for free.</p>
