@@ -78,7 +78,7 @@ img {
 .wrapper {
   width: 800px;
   margin: 0 auto;
-  /*background: url("https://s3.amazonaws.com/learn-verified/MOCKUP.jpg");*/
+  background: url("https://s3.amazonaws.com/learn-verified/MOCKUP.jpg");
 }
 
 .album {
@@ -95,7 +95,7 @@ img {
   background: url("https://s3.amazonaws.com/learn-verified/cover.jpg");
   background-size: 100%;
   text-align: center;
-} 
+}
 
 #back {
   background: rgba(247,211,27,1);
