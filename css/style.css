@@ -22,11 +22,11 @@ body {
   background: linear-gradient(to bottom,  rgba(79,79,79,1) 0%,rgba(19,19,19,1) 57%,rgba(19,19,19,1) 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4f4f4f', endColorstr='#131313',GradientType=0 ); /* IE6-8 */
   font-family: 'Avenir Next Condensed', Helvetica, sans-serif;
-  font-size: 100%;
+  font-size: 80%;
 }
 
 h1 {
-  font-size: 12.25em;
+  font-size: 10.25em;
   line-height: 1em;
   letter-spacing: .03em;
   margin-bottom: 2px;
@@ -78,7 +78,7 @@ img {
 .wrapper {
   width: 800px;
   margin: 0 auto;
-  /*background: url("https://s3.amazonaws.com/learn-verified/MOCKUP.jpg");*/
+  background: url("https://s3.amazonaws.com/learn-verified/MOCKUP.jpg");
 }
 
 .album {
@@ -95,7 +95,7 @@ img {
   background: url("https://s3.amazonaws.com/learn-verified/cover.jpg");
   background-size: 100%;
   text-align: center;
-} 
+}
 
 #back {
   background: rgba(247,211,27,1);
@@ -108,5 +108,6 @@ img {
   height: 165px;
   background: rgba(247,211,27,1);
   margin-left: 163px;
-  padding-top: 25px;
+  padding-top: 35px;
+  font-weight: bold;
 }
