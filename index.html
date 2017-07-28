@@ -1,45 +1,74 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>HTML Album Cover</title>
-    <link rel="stylesheet" href="css/style.css">
-  </head>
-  <body>
-    <div class="wrapper">
-      <div id="front" class="album">
-        <div id="title-box">
+<html>
+<body>
+<div>
+  <a href="#" id="start_button" onclick="startDictation(event)">Dictate</a>
+</div>
 
-          <!-- Level 4 'PHARRELL WILLIAMS' Header -->
+<div id="results">
+  <span id="final_span" class="final"></span>
+  <span id="interim_span" class="interim"></span>
+</div>
 
-          <!-- Level 2 'HAPPY' Header -->
+<script type="text/javascript">
+var final_transcript = '';
+var recognizing = false;
 
-          <!-- Level 4 '| FROM DESPICABLE ME...' Header -->
+if ('webkitSpeechRecognition' in window) {
 
-        </div>
-      </div>
+  var recognition = new webkitSpeechRecognition();
 
-      <div id="back" class="album">
+  recognition.continuous = true;
+  recognition.interimResults = true;
 
-        <!-- Level 3 '| FROM DESPICABLE ME...' Header -->
-        
-        <!-- Level 1 'HAPPY' Header -->
+  recognition.onstart = function() {
+    recognizing = true;
+  };
 
-        <!-- Level 3 'WRITTEN BY...' Header -->
+  recognition.onerror = function(event) {
+    console.log(event.error);
+  };
 
-        <!-- pararaph text 'PUBLISHED BY...' -->
+  recognition.onend = function() {
+    recognizing = false;
+  };
 
-        <!-- span text 'PHARRELLWILLIAMS.COM' -->
+  recognition.onresult = function(event) {
+    var interim_transcript = '';
+    for (var i = event.resultIndex; i < event.results.length; ++i) {
+      if (event.results[i].isFinal) {
+        final_transcript += event.results[i][0].transcript;
+      } else {
+        interim_transcript += event.results[i][0].transcript;
+      }
+    }
+    final_transcript = capitalize(final_transcript);
+    final_span.innerHTML = linebreak(final_transcript);
+    interim_span.innerHTML = linebreak(interim_transcript);
+    
+  };
+}
 
-        <!-- display the images hosted on [https://s3.amazonaws.com/learn-verified/columbia-logo.png] -->
+var two_line = /\n\n/g;
+var one_line = /\n/g;
+function linebreak(s) {
+  return s.replace(two_line, '<p></p>').replace(one_line, '<br>');
+}
 
-        <!-- span text 'COLUMBIARECORDS.COM' -->
+function capitalize(s) {
+  return s.replace(s.substr(0,1), function(m) { return m.toUpperCase(); });
+}
 
-        <br>
-        
-        <!-- display the images hosted on [https://s3.amazonaws.com/learn-verified/sony-logo.png] -->
-
-      </div>
-    </div>
-  </body>
+function startDictation(event) {
+  if (recognizing) {
+    recognition.stop();
+    return;
+  }
+  final_transcript = '';
+  recognition.lang = 'en-US';
+  recognition.start();
+  final_span.innerHTML = '';
+  interim_span.innerHTML = '';
+}
+</script>
+</body>
 </html>
