@@ -30,6 +30,7 @@ h1 {
   line-height: 1em;
   letter-spacing: .03em;
   margin-bottom: 2px;
+  font-stretch: condensed;
 }
 
 h2 {
@@ -37,6 +38,7 @@ h2 {
   line-height: 1em;
   letter-spacing: .03em;
   margin-bottom: 2px;
+  font-stretch: condensed;
 }
 
 h3 {
@@ -44,6 +46,7 @@ h3 {
   letter-spacing: .3em;
   margin-bottom: 18px;
   line-height: 1em;
+  font-stretch: condensed;
 }
 
 h4 {
@@ -52,6 +55,7 @@ h4 {
   letter-spacing: .4em;
   margin-bottom: 9px;
   line-height: 1em;
+  font-stretch: condensed;
 }
 
 p {
@@ -59,6 +63,7 @@ p {
   line-height: 1.8em;
   letter-spacing: .103em;
   margin-bottom: 15px;
+  font-stretch: condensed;
 }
 
 span {
@@ -68,6 +73,7 @@ span {
   letter-spacing: .35em;
   vertical-align: top;
   padding-top: 10px;
+  font-stretch: condensed;
 }
 
 img {
@@ -95,7 +101,7 @@ img {
   background: url("https://s3.amazonaws.com/learn-verified/cover.jpg");
   background-size: 100%;
   text-align: center;
-} 
+}
 
 #back {
   background: rgba(247,211,27,1);
