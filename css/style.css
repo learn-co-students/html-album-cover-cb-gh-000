@@ -95,7 +95,7 @@ img {
   background: url("https://s3.amazonaws.com/learn-verified/cover.jpg");
   background-size: 100%;
   text-align: center;
-} 
+}
 
 #back {
   background: rgba(247,211,27,1);
@@ -104,7 +104,7 @@ img {
 }
 
 #title-box {
-  width: 252px;
+  width: 300px;
   height: 165px;
   background: rgba(247,211,27,1);
   margin-left: 163px;
