@@ -62,6 +62,7 @@ p {
 }
 
 span {
+  text-align: center;
   display: inline-block;
   font-size: 1em;
   line-height: 1em;
@@ -95,7 +96,7 @@ img {
   background: url("https://s3.amazonaws.com/learn-verified/cover.jpg");
   background-size: 100%;
   text-align: center;
-} 
+}
 
 #back {
   background: rgba(247,211,27,1);
