@@ -1,5 +1,7 @@
 <!-- FRONT -->
-
+<!doctype html>
+<html>
+<body>
 PHARRELL WILLIAMS
 
 HAPPY
@@ -23,3 +25,5 @@ PHARRELLWILLIAMS.COM
 COLUMBIARECORDS.COM
 
 [sony-logo.png]
+<body>
+</html>
